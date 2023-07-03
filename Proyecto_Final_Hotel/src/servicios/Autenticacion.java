@@ -1,5 +1,8 @@
 package servicios;
 
+import entidades.Persona;
+
 public interface Autenticacion {
-    public void autenticar();
+
+    public boolean autenticar(Persona persona, int id, String claveAcceso);
 }

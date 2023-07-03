@@ -1,0 +1,7 @@
+proyecto final
+
+- class Habitacion     id = numHabitacion?
+
+- class Historial extends Habitacion?   (habitacionOcupada =  id/numHabitacion)
+//es el mismo tipo de dato, para almacenar solo una variable con ese dato
+// o sino usarlo por getter

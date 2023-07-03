@@ -11,9 +11,10 @@ public class Pasajero extends Persona {
 
     }
 
-    public Pasajero(int id, String nombre, int dni, String nacionalidad, String domicilioOrigen,
+    public Pasajero(int id, String nombre, int dni, String rol, String claveAcceso, String nacionalidad,
+            String domicilioOrigen,
             ArrayList<Historial> historial) {
-        super(id, nombre, dni);
+        super(id, nombre, dni, rol, claveAcceso);
         this.nacionalidad = nacionalidad;
         this.domicilioOrigen = domicilioOrigen;
         this.historial = new ArrayList<Historial>();

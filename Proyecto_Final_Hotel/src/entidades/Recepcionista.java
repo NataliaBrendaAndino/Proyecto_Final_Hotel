@@ -9,8 +9,8 @@ public class Recepcionista extends Persona {
 
     }
 
-    public Recepcionista(int id, String nombre, int dni, LocalDateTime ingreso) {
-        super(id, nombre, dni);
+    public Recepcionista(int id, String nombre, int dni, String rol, String claveAcceso, LocalDateTime ingreso) {
+        super(id, nombre, dni, rol, claveAcceso);
         this.ingreso = null;
     }
 

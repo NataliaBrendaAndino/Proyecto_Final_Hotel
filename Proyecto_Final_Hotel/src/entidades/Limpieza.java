@@ -9,8 +9,8 @@ public class Limpieza extends Persona {
 
     }
 
-    public Limpieza(int id, String nombre, int dni) {
-        super(id, nombre, dni);
+    public Limpieza(int id, String nombre, int dni, String rol, String claveAcceso) {
+        super(id, nombre, dni, rol, claveAcceso);
         this.ingreso = null;
     }
 
