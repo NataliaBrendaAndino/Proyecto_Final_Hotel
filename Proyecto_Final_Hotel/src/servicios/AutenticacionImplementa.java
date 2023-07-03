@@ -6,6 +6,7 @@ import entidades.Pasajero;
 import entidades.Persona;
 import entidades.Recepcionista;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AutenticacionImplementa implements Autenticacion {
@@ -40,9 +41,46 @@ public class AutenticacionImplementa implements Autenticacion {
             if (rol.equalsIgnoreCase("Administrador")) {
                 persona = new Administrador();
                 if (autenticar(persona, idIngresado, claveIngresada)) {
+
                     System.out.println("Bienvenido, " + persona.getNombre());
                     System.out.println("¿Qué haremos hoy?");
-                    System.out.println(""); // switch acciones, o ir directo a Registro
+                    System.out.println("1. Ingresar nuevo recepcionista");
+                    System.out.println("2. Mostrar recepcionistas");
+                    System.out.println("3. Ingresar nuevo empleado de limpieza");
+                    System.out.println("4. Mostrar empleados de limpieza");
+                    int opcion = leer.nextInt();
+
+                    AdminServicio administradorServicio = new AdminServicio();
+                    ArrayList<Recepcionista> listaRecepcionistas = new ArrayList<>();
+                    ArrayList<Limpieza> listaLimpiezas = new ArrayList<>();
+
+                    switch (opcion) {
+                        case 1:
+                            System.out.println("1.Ingresar nuevo recepcionista: ");
+                            listaRecepcionistas = administradorServicio.crearRecepcionistas();
+                            break;
+
+                        case 2:
+                            System.out.println("2. Mostrando recepcionistas: \n");
+
+                            for (Recepcionista recepcionista : listaRecepcionistas) {
+                                System.out.println(recepcionista.toString());
+                            }
+                            break;
+
+                        case 3:
+                            System.out.println("3. Ingresar nuevo empleado de limpieza: ");
+                            ArrayList<Limpieza> listaEmpleadosLimpieza = administradorServicio.crearEmpleadosLimpieza();
+                            break;
+
+                        case 4:
+                            System.out.println("4. Mostrando los empleados de limpieza: ");
+
+                            for (Limpieza limpieza : listaLimpiezas) {
+                                System.out.println(limpieza.toString());
+                            }
+                            break;
+                    }
                 } else {
                     System.out.println("Contraseña incorrecta.");
                 }
@@ -69,8 +107,12 @@ public class AutenticacionImplementa implements Autenticacion {
             }
         } else if (tipoUsuario.equalsIgnoreCase("Pasajero")) {
 
-            Pasajero persona = new Pasajero();
-            System.out.println("Bienvenido!");
+            Pasajero pasajero = new Pasajero();
+            System.out.println("Bienvenido, cómo te llamas?");
+            pasajero.setNombre(leer.next());
+            System.out.println("Mucho gusto, " + pasajero.getNombre() + ", soy tu recepcionista virtual");
+            System.out.println("Qué deseas hacer?");
+            System.out.println(""); // switch acciones de reserva, consultas, etc.
 
         }
     }
