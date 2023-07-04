@@ -19,16 +19,16 @@ public class AutenticacionImplementa implements Autenticacion {
         return persona.getId() == id && persona.getClaveAcceso().equals(claveAcceso);
     }
 
-    public void ingresoUsuario() {
+    public void ingresoUsuario(ArrayList<Persona> empleados) {
 
         System.out.println("Benvenidos al Hotel! ");
         System.out.println(""); // switch con opciones (Pasajero / Empleados)
         // ya en opcion Empleados, obtenemos quién es:
-        System.out.print("Usted es (Pasajero / Empleado): ");
+        System.out.print("Usted es (Pasajero / Staff): ");
         String tipoUsuario = leer.next();
-        if (tipoUsuario.equalsIgnoreCase("Empleado")) {
+        if (tipoUsuario.equalsIgnoreCase("Staff")) {
 
-            System.out.println("Ingrese su puesto: ");
+            System.out.print("Ingrese su puesto: ");
             String rol = leer.next();
             System.out.print("Ingrese su Id: ");
             int idIngresado = leer.nextInt();
@@ -39,51 +39,58 @@ public class AutenticacionImplementa implements Autenticacion {
             Persona persona = null;
 
             if (rol.equalsIgnoreCase("Administrador")) {
-                persona = new Administrador();
+                persona = empleados.get(0);
                 if (autenticar(persona, idIngresado, claveIngresada)) {
 
-                    System.out.println("Bienvenido, " + persona.getNombre());
-                    System.out.println("¿Qué haremos hoy?");
-                    System.out.println("1. Ingresar nuevo recepcionista");
-                    System.out.println("2. Mostrar recepcionistas");
-                    System.out.println("3. Ingresar nuevo empleado de limpieza");
-                    System.out.println("4. Mostrar empleados de limpieza");
-                    int opcion = leer.nextInt();
+                    boolean volverAlMenu = true;
+                    while (volverAlMenu) {
 
-                    AdminServicio administradorServicio = new AdminServicio();
-                    ArrayList<Recepcionista> listaRecepcionistas = new ArrayList<>();
-                    ArrayList<Limpieza> listaLimpiezas = new ArrayList<>();
+                        System.out.println("");
+                        System.out.println("Bienvenido, " + persona.getNombre());
+                        System.out.println("¿Qué haremos hoy?");
+                        System.out.println("1. Ingresar nuevo recepcionista");
+                        System.out.println("2. Mostrar recepcionistas");
+                        System.out.println("3. Ingresar nuevo empleado de limpieza");
+                        System.out.println("4. Mostrar empleados de limpieza");
+                        System.out.println("5. Salir");
+                        int opcion = leer.nextInt();
 
-                    switch (opcion) {
-                        case 1:
-                            System.out.println("1.Ingresar nuevo recepcionista: ");
-                            listaRecepcionistas = administradorServicio.crearRecepcionistas();
-                            break;
+                        AdminServicio administradorServicio = new AdminServicio();
+                        ArrayList<Recepcionista> recepcionistas = new ArrayList<>();
+                        ArrayList<Limpieza> empleadosLimpieza = new ArrayList<>();
 
-                        case 2:
-                            System.out.println("2. Mostrando recepcionistas: \n");
+                        switch (opcion) {
+                            case 1:
+                                System.out.println("1.Ingresar nuevo recepcionista: ");
+                                administradorServicio.crearRecepcionistas(recepcionistas);
+                                break;
 
-                            for (Recepcionista recepcionista : listaRecepcionistas) {
-                                System.out.println(recepcionista.toString());
-                            }
-                            break;
+                            case 2:
+                                System.out.println("2. Mostrando recepcionistas: \n");
+                                administradorServicio.mostrarRecepcionistas(recepcionistas);
+                                break;
 
-                        case 3:
-                            System.out.println("3. Ingresar nuevo empleado de limpieza: ");
-                            ArrayList<Limpieza> listaEmpleadosLimpieza = administradorServicio.crearEmpleadosLimpieza();
-                            break;
+                            case 3:
+                                System.out.println("3. Ingresar nuevo empleado de limpieza: ");
+                                administradorServicio.crearEmpleadosLimpieza(empleadosLimpieza);
+                                break;
 
-                        case 4:
-                            System.out.println("4. Mostrando los empleados de limpieza: ");
+                            case 4:
+                                System.out.println("4. Mostrando los empleados de limpieza: ");
+                                administradorServicio.mostrarLimpiezas(empleadosLimpieza);
+                                break;
 
-                            for (Limpieza limpieza : listaLimpiezas) {
-                                System.out.println(limpieza.toString());
-                            }
-                            break;
+                            case 5:
+                                System.out.println("5. Saliendo...");
+                                System.out.println("Adiós!");
+                                volverAlMenu = false;
+                                break;
+                        }
                     }
                 } else {
                     System.out.println("Contraseña incorrecta.");
                 }
+
             } else if (rol.equalsIgnoreCase("Recepcionista")) {
                 persona = new Recepcionista();
                 if (autenticar(persona, idIngresado, claveIngresada)) {
@@ -93,7 +100,7 @@ public class AutenticacionImplementa implements Autenticacion {
                 } else {
                     System.out.println("Contraseña incorrecta.");
                 }
-            } else if (rol.equalsIgnoreCase("EmpleadoLimpieza")) {
+            } else if (rol.equalsIgnoreCase("Limpieza")) {
                 persona = new Limpieza();
                 if (autenticar(persona, idIngresado, claveIngresada)) {
                     System.out.println("Bienvenido, " + persona.getNombre());
@@ -102,8 +109,6 @@ public class AutenticacionImplementa implements Autenticacion {
                 } else {
                     System.out.println("Contraseña incorrecta.");
                 }
-            } else {
-                System.out.println("Ups! Puesto incorrecto.");
             }
         } else if (tipoUsuario.equalsIgnoreCase("Pasajero")) {
 
@@ -116,5 +121,4 @@ public class AutenticacionImplementa implements Autenticacion {
 
         }
     }
-
 }

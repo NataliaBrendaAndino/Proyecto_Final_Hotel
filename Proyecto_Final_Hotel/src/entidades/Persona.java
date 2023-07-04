@@ -60,7 +60,8 @@ public abstract class Persona {
 
     @Override
     public String toString() {
-        return "Persona [id= " + id + ", nombre= " + nombre + ", dni= " + dni + ", rol= " + rol + " ]";
+        return "Persona [id= " + id + ", nombre= " + nombre + ", dni= " + dni + ", rol= " + rol + "clave de acceso: "
+                + claveAcceso + " ]";
     }
 
 }

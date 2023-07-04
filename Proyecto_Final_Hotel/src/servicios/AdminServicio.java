@@ -9,9 +9,10 @@ import entidades.Recepcionista;
 public class AdminServicio {
 
     Scanner leer = new Scanner(System.in);
+    ArrayList<Recepcionista> recepcionistas = new ArrayList<>();
+    ArrayList<Limpieza> empleadosLimpieza = new ArrayList<>();
 
-    public ArrayList<Recepcionista> crearRecepcionistas() {
-        ArrayList<Recepcionista> recepcionistas = new ArrayList<>();
+    public ArrayList<Recepcionista> crearRecepcionistas(ArrayList<Recepcionista> recepcionistas) {
 
         System.out.print("Ingrese la cantidad de recepcionistas: ");
         int cantidadRecepcionistas = leer.nextInt();
@@ -24,10 +25,12 @@ public class AdminServicio {
             recepcionista.setRol("Recepcionista");
             System.out.print("Id: ");
             recepcionista.setId(leer.nextInt());
+            leer.nextLine();
             System.out.print("Nombre: ");
             recepcionista.setNombre(leer.nextLine());
-            System.out.println("DNI: ");
+            System.out.print("DNI: ");
             recepcionista.setDni(leer.nextInt());
+            leer.nextLine();
             System.out.println(
                     "Clave de acceso será igual que el DNI la primera vez, y luego el empleado podrá cambiarla.");
             String dniAString = String.valueOf(recepcionista.getDni());
@@ -39,8 +42,7 @@ public class AdminServicio {
         return recepcionistas;
     }
 
-    public ArrayList<Limpieza> crearEmpleadosLimpieza() {
-        ArrayList<Limpieza> empleadosLimpieza = new ArrayList<>();
+    public ArrayList<Limpieza> crearEmpleadosLimpieza(ArrayList<Limpieza> empleadosLimpieza) {
 
         System.out.print("Ingrese la cantidad de empleados de limpieza: ");
         int cantidadEmpleadosLimpieza = leer.nextInt();
@@ -53,10 +55,13 @@ public class AdminServicio {
             limpieza.setRol("Recepcionista");
             System.out.print("Id: ");
             limpieza.setId(leer.nextInt());
+            leer.nextLine();
             System.out.print("Nombre: ");
             limpieza.setNombre(leer.nextLine());
-            System.out.println("DNI: ");
+            leer.nextLine();
+            System.out.print("DNI: ");
             limpieza.setDni(leer.nextInt());
+            leer.nextLine();
             System.out.println(
                     "Clave de acceso será igual que el DNI la primera vez, y luego el empleado podrá cambiarla.");
             String dniAString = String.valueOf(limpieza.getDni());
@@ -66,5 +71,22 @@ public class AdminServicio {
         }
 
         return empleadosLimpieza;
+    }
+
+    public void mostrarRecepcionistas(ArrayList<Recepcionista> recepcionistas) {
+
+        for (Recepcionista recepcionista : recepcionistas) {
+
+            System.out.println(recepcionista.toString());
+
+        }
+    }
+
+    public void mostrarLimpiezas(ArrayList<Limpieza> empleadosLimpieza) {
+
+        for (Limpieza limpieza : empleadosLimpieza) {
+            System.out.println(limpieza.toString());
+        }
+
     }
 }
