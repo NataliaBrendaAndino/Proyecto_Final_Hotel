@@ -1,0 +1,14 @@
+proyecto final
+
+- class Habitacion     id = numHabitacion?
+
+- class Historial extends Habitacion?   (habitacionOcupada =  id/numHabitacion)
+//es el mismo tipo de dato, para almacenar solo una variable con ese dato
+// o sino usarlo por getter
+
+
+Con respecto al Sistema de autenticacion/otras operaciones:
+
+- agregué una clase AdminServicio para implementar métodos que quiera hacer el Administrador (gestionar sus empleados)
+
+- el Pasajero puede ser un usuario más de este sistema, interactuando por aquí (via web) para gestionar algunos datos de su estadía (aunque tambien debe encargarse Recepcionista de esto, usando Registro).  
