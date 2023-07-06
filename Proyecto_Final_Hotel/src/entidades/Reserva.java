@@ -6,17 +6,19 @@ public class Reserva {
     private int id;
     private boolean reserva;
     private Integer saldo; // lo que debe
-    private Date fechaReserva;
+    private Date fechaReservaIngreso;
+    private Date fechaReservaSalida;
 
     public Reserva() {
 
     }
 
-    public Reserva(int id, boolean reserva, Integer saldo, Date fechaReserva) {
+    public Reserva(int id, boolean reserva, Integer saldo, Date fechaReservaIngreso, Date fechaReservaSalida) {
         this.id = id;
         this.reserva = reserva;
         this.saldo = saldo;
-        this.fechaReserva = fechaReserva;
+        this.fechaReservaIngreso = fechaReservaIngreso;
+        this.fechaReservaSalida = fechaReservaSalida;
     }
 
     public int getId() {
@@ -43,12 +45,20 @@ public class Reserva {
         this.saldo = saldo;
     }
 
-    public Date getFechaReserva() {
-        return fechaReserva;
+    public Date getFechaReservaIngreso() {
+        return fechaReservaIngreso;
     }
 
-    public void setFechaReserva(Date fechaReserva) {
-        this.fechaReserva = fechaReserva;
+    public void setFechaReservaIngreso(Date fechaReservaIngreso) {
+        this.fechaReservaIngreso = fechaReservaIngreso;
+    }
+
+    public Date getFechaReservaSalida() {
+        return fechaReservaSalida;
+    }
+
+    public void setFechaReservaSalida(Date fechaReservaSalida) {
+        this.fechaReservaSalida = fechaReservaSalida;
     }
 
 }

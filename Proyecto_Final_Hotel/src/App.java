@@ -1,7 +1,5 @@
-package main;
-
-import entidades.Administrador;
-import servicios.AutenticacionImplementa;
+import entidades.*;
+import servicios.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
