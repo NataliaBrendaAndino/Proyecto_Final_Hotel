@@ -11,12 +11,4 @@ public class Administrador extends Persona {
 
     }
 
-    public String getClaveAcceso() {
-        return claveAcceso;
-    }
-
-    public void setClaveAcceso(String claveAcceso) {
-        this.claveAcceso = claveAcceso;
-    }
-
 }
