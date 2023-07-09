@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class AutenticacionImplementa implements Autenticacion {
 
     Scanner leer = new Scanner(System.in);
+    AdminServicio servi = new AdminServicio();
 
     @Override
     public boolean autenticar(Persona persona, int id, String claveAcceso) {
@@ -19,15 +20,16 @@ public class AutenticacionImplementa implements Autenticacion {
         return persona.getId() == id && persona.getClaveAcceso().equals(claveAcceso);
     }
 
-    public void ingresoUsuario(ArrayList<Persona> empleados) {
+    public void ingresoUsuario() {
 
-        System.out.println("Benvenidos al Hotel! ");
-        System.out.println(""); // switch con opciones (Pasajero / Empleados)
-        // ya en opcion Empleados, obtenemos quién es:
-        System.out.print("Usted es (Pasajero / Staff): ");
+        System.out.println("_____ Bienvenidos al Hotel _____ ");
+        System.out.println("");
+        System.out.print("Ingresar como (Pasajero / Staff): ");
         String tipoUsuario = leer.next();
         if (tipoUsuario.equalsIgnoreCase("Staff")) {
 
+            System.out.println("");
+            System.out.println("STAFF");
             System.out.print("Ingrese su puesto: ");
             String rol = leer.next();
             System.out.print("Ingrese su Id: ");
@@ -39,60 +41,24 @@ public class AutenticacionImplementa implements Autenticacion {
             Persona persona = null;
 
             if (rol.equalsIgnoreCase("Administrador")) {
-                persona = empleados.get(0);
-                if (autenticar(persona, idIngresado, claveIngresada)) {
 
-                    boolean volverAlMenu = true;
-                    while (volverAlMenu) {
+                Administrador admin1 = new Administrador(1, "Lionel Scaloni", 12345, "Administrador", "contrasenia");
 
-                        System.out.println("");
-                        System.out.println("Bienvenido, " + persona.getNombre());
-                        System.out.println("¿Qué haremos hoy?");
-                        System.out.println("1. Ingresar nuevo recepcionista");
-                        System.out.println("2. Mostrar recepcionistas");
-                        System.out.println("3. Ingresar nuevo empleado de limpieza");
-                        System.out.println("4. Mostrar empleados de limpieza");
-                        System.out.println("5. Salir");
-                        int opcion = leer.nextInt();
+                if (autenticar(admin1, idIngresado, claveIngresada)) {
 
-                        AdminServicio administradorServicio = new AdminServicio();
-                        ArrayList<Recepcionista> recepcionistas = new ArrayList<>();
-                        ArrayList<Limpieza> empleadosLimpieza = new ArrayList<>();
+                    servi.menuAdmin(admin1);
 
-                        switch (opcion) {
-                            case 1:
-                                System.out.println("1.Ingresar nuevo recepcionista: ");
-                                administradorServicio.crearRecepcionistas(recepcionistas);
-                                break;
-
-                            case 2:
-                                System.out.println("2. Mostrando recepcionistas: \n");
-                                administradorServicio.mostrarRecepcionistas(recepcionistas);
-                                break;
-
-                            case 3:
-                                System.out.println("3. Ingresar nuevo empleado de limpieza: ");
-                                administradorServicio.crearEmpleadosLimpieza(empleadosLimpieza);
-                                break;
-
-                            case 4:
-                                System.out.println("4. Mostrando los empleados de limpieza: ");
-                                administradorServicio.mostrarLimpiezas(empleadosLimpieza);
-                                break;
-
-                            case 5:
-                                System.out.println("5. Saliendo...");
-                                System.out.println("Adiós!");
-                                volverAlMenu = false;
-                                break;
-                        }
-                    }
                 } else {
                     System.out.println("Contraseña incorrecta.");
                 }
 
             } else if (rol.equalsIgnoreCase("Recepcionista")) {
                 persona = new Recepcionista();
+
+                Recepcionista recep1 = new Recepcionista(1, "Lionel Andres", 23456789, "Recepcionista", "123", null);
+                Recepcionista recep2 = new Recepcionista(2, "Angel Maria", 23456789, "Recepcionista", "456", null);
+                Recepcionista recep3 = new Recepcionista(3, "Emilia Martinez", 23456789, "Recepcionista", "789", null);
+
                 if (autenticar(persona, idIngresado, claveIngresada)) {
                     System.out.println("Bienvenido, " + persona.getNombre());
                     System.out.println("¿Qué haremos hoy?");
