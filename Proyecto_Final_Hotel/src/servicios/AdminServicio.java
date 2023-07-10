@@ -9,6 +9,8 @@ import entidades.Limpieza;
 import entidades.Persona;
 import entidades.Recepcionista;
 
+import excepciones.IndexOutOfBoundsException;
+
 public class AdminServicio {
 
     private ArrayList<Persona> empleados;
@@ -46,35 +48,43 @@ public class AdminServicio {
             System.out.println("5 | Ver todos los empleados");
             System.out.println("0 | Salir");
             int opcion = leer.nextInt();
-            leer.nextLine();
-            System.out.println("");
 
-            switch (opcion) {
-                case 1:
-                    crearRecepcionistas();
-                    break;
+            try {
+                leer.nextLine();
+                System.out.println("");
 
-                case 2:
-                    mostrarRecepcionistas();
-                    break;
+                switch (opcion) {
+                    case 1:
+                        crearRecepcionistas();
+                        break;
 
-                case 3:
-                    crearEmpleadosLimpieza();
-                    break;
+                    case 2:
+                        mostrarRecepcionistas();
+                        break;
 
-                case 4:
-                    mostrarLimpiezas();
-                    break;
+                    case 3:
+                        crearEmpleadosLimpieza();
+                        break;
 
-                case 5:
-                    verTodosEmpleados();
-                    break;
+                    case 4:
+                        mostrarLimpiezas();
+                        break;
 
-                case 0:
-                    System.out.println("5. Saliendo...");
-                    System.out.println("Adiós!");
-                    volverAlMenu = false;
-                    break;
+                    case 5:
+                        verTodosEmpleados();
+                        break;
+
+                    case 0:
+                        System.out.println("0 | Saliendo...\n Adiós!");
+                        System.out.println("_____ HOTEL _____");
+                        volverAlMenu = false;
+                        break;
+
+                    default:
+                        throw new IndexOutOfBoundsException("Opción inválida.");
+                }
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println(e.getMessage());
             }
         }
     }

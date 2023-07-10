@@ -159,11 +159,11 @@ public class HabitacionServicio {
     public void consultarLimpiezaYDesinfeccion() {
         System.out.println("");
         System.out.println("Limpieza y desinfección");
-        System.out.println("¿De qué habitación desea conocer la limpieza");
+        System.out.println("¿De qué habitación desea conocer la limpieza?");
         int numHabitacion = leer.nextInt();
         for (Habitacion habitacion : habitaciones) {
             if (habitacion.getNumHabitacion() == numHabitacion) {
-                System.out.println("Limpiea: " + habitacion.isLimpieza());
+                System.out.println("Limpieza: " + habitacion.isLimpieza());
                 System.out.println("Desinfeccion: " + habitacion.isDesinfeccion());
             }
         }
