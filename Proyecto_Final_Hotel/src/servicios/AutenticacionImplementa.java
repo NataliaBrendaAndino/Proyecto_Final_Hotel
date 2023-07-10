@@ -17,6 +17,7 @@ public class AutenticacionImplementa implements Autenticacion {
     AdminServicio servi = new AdminServicio();
     RecepcionServicio recepServi = new RecepcionServicio();
     LimpiezaServicio limpiServi = new LimpiezaServicio();
+    RegistroImplementa regiImple = new RegistroImplementa();
 
     @Override
     public boolean autenticar(Persona persona, int id, String claveAcceso) throws WrongPasswordException {
@@ -99,19 +100,23 @@ public class AutenticacionImplementa implements Autenticacion {
                             } catch (WrongPasswordException e) {
                                 System.out.println(e.getMessage());
                             }
-
-                        } else if (tipoUsuario.equalsIgnoreCase("Pasajero")) {
-
-                            Pasajero pasajero = new Pasajero();
-                            System.out.println("Bienvenido, cómo te llamas?");
-                            pasajero.setNombre(leer.next());
-                            System.out
-                                    .println("Mucho gusto, " + pasajero.getNombre() + ", soy tu recepcionista virtual");
-                            System.out.println("Qué deseas hacer?");
-                            System.out.println(""); // switch acciones de reserva, consultas, etc.
-
                         }
                     }
+
+                } else if (tipoUsuario.equalsIgnoreCase("Pasajero")) {
+
+                    System.out.println("");
+
+                    Pasajero pasajero = new Pasajero();
+                    System.out.println("* * *");
+                    System.out.println("PASAJEROS");
+                    System.out.println("Bienvenido, cómo te llamas?");
+                    pasajero.setNombre(leer.next());
+                    System.out
+                            .println("Mucho gusto, " + pasajero.getNombre() + ", soy tu recepcionista virtual");
+                    System.out.println("");
+                    regiImple.tomarReserva();
+
                 }
 
             } catch (OpcionIncorrectaException e) {
@@ -120,6 +125,7 @@ public class AutenticacionImplementa implements Autenticacion {
                 System.out.println("");
             }
         } while (!opcionValida);
+
     }
 
 }

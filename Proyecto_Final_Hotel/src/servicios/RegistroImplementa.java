@@ -126,24 +126,28 @@ public class RegistroImplementa implements Registro {
     @Override
     // domicilio y nacionalidad quedan nulas para que se completen en el checkin
     public void tomarReserva() {
+        System.out.println("ingresando a...");
+        System.out.println("* * *");
+        System.out.println("RESERVAS");
         System.out.println("");
-        System.out.println("Realizar RESERVA");
-        System.out.println("Datos del pasajero");
+        System.out.println("Necesito pedirte algunos datos.");
+        System.out.println("");
 
-        System.out.println("Se hospedó antes en el hotel? S/N");
+        System.out.println("Te habías hospedado antes en el hotel? S/N");
         String menu = leer.nextLine();
         if (menu.equalsIgnoreCase("s")) {
-            System.out.println("Indique su dni:");
+            System.out.println("Que bueno verte otra vez por aquí!");
+            System.out.println("Ingresá tu dni:");
             int dni = leer.nextInt();
             for (Pasajero pasajero : listaPasajeros) {
                 if (pasajero.getDni() == dni) {
                     System.out.println("Gracias por volver a confiar en nosotros, " + pasajero.getNombre().toString());
-                    System.out.println("Completar reserva habitación.");
+                    // System.out.println("Completar reserva habitación.");
                 }
             }
         } else {
             Pasajero pasajero = new Pasajero();
-            System.out.println("Ingrese su nombre (o del pasajero a quien está realizando la reservar): ");
+            System.out.println("Ingresá tu nombre (o del pasajero a quien está realizando la reserva): ");
             String nombrePasajero = leer.next();
             pasajero.setNombre(nombrePasajero);
             System.out.println("Indique su DNI");
@@ -151,8 +155,8 @@ public class RegistroImplementa implements Registro {
             pasajero.setDni(dniPasajero);
             pasajero.setRol("pasajero");
             listaPasajeros.add(pasajero);
-            System.out.println("Pasajero registrado correctamente.");
-            System.out.println("Completar reserva habitación");
+            System.out.println("Registro exitoso! Que tengas una excelente estadía!");
+            // System.out.println("Completar reserva habitación");
         }
     }
 }
