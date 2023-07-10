@@ -16,7 +16,7 @@ public class Habitacion {
             Reserva reserva) {
         this.id = id;
         this.numHabitacion = numHabitacion;
-        this.disponible = disponible;
+        this.disponible = true;
         this.limpieza = limpieza;
         this.desinfeccion = desinfeccion;
         this.reserva = reserva;

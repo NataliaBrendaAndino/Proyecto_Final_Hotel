@@ -1,18 +1,16 @@
 package entidades;
 
-import java.sql.Date;
-
 public class Historial {
     private int id;
-    private Date fechaEstadia;
-    private String habitacionOcupada; // que habitación ocupó en su estadía
+    private String fechaEstadia;
+    private int habitacionOcupada; // que habitación ocupó en su estadía
     private String observaciones;
 
     public Historial() {
 
     }
 
-    public Historial(int id, Date fechaEstadia, String habitacionOcupada, String observaciones) {
+    public Historial(int id, String fechaEstadia, int habitacionOcupada, String observaciones) {
         this.id = id;
         this.fechaEstadia = fechaEstadia;
         this.habitacionOcupada = habitacionOcupada;
@@ -27,19 +25,19 @@ public class Historial {
         this.id = id;
     }
 
-    public Date getFechaEstadia() {
+    public String getFechaEstadia() {
         return fechaEstadia;
     }
 
-    public void setFechaEstadia(Date fechaEstadia) {
+    public void setFechaEstadia(String fechaEstadia) {
         this.fechaEstadia = fechaEstadia;
     }
 
-    public String getHabitacionOcupada() {
+    public int getHabitacionOcupada() {
         return habitacionOcupada;
     }
 
-    public void setHabitacionOcupada(String habitacionOcupada) {
+    public void setHabitacionOcupada(int habitacionOcupada) {
         this.habitacionOcupada = habitacionOcupada;
     }
 

@@ -8,6 +8,4 @@ public interface Registro {
 
     public void tomarReserva();
 
-    public void listarHabitaciones();
-
 }
