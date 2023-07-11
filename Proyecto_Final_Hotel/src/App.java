@@ -1,6 +1,10 @@
+import API.ApiMonedas;
 import entidades.Recepcionista;
 import repositorio.ConectorRepo;
+import repositorio.HabitacionRepo;
+import repositorio.RecepcionistaRepo;
 import servicios.AutenticacionImplementa;
+import servicios.HabitacionServicio;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -18,18 +22,11 @@ public class App {
         // id= su dni, clave por defecto= "321"
 
         ConectorRepo repo = new ConectorRepo();
-        // repo.crearBaseDatos();
-        // repo.crearTablaPersona();
-        // repo.crearTablaPasajero();
-        // repo.crearTablaAdministrador();
-        // repo.crearTablaLimpieza();
-        // repo.crearTablaRecepcionista();
-        // repo.crearTablaHistorial();
-        // repo.crearTablaReserva();
-        // repo.crearTablaHabitacion();
 
         AutenticacionImplementa autentic = new AutenticacionImplementa();
-        autentic.ingresoUsuario();
+        // autentic.ingresoUsuario();
+        ApiMonedas apiMonedas = new ApiMonedas();
+        apiMonedas.consumirApiMonedas();
 
     }
 }

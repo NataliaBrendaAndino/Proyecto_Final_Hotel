@@ -152,7 +152,10 @@ public class ConectorRepo {
             statement = connection.createStatement();
             String crearTablaAdmin = "CREATE TABLE IF NOT EXISTS Administrador ("
                     + "id INT AUTO_INCREMENT PRIMARY KEY,"
-                    + "FOREIGN KEY (id) REFERENCES persona(id)"
+                    + "nombre VARCHAR(100) NOT NULL,"
+                    + "dni INT NOT NULL,"
+                    + "rol VARCHAR(50),"
+                    + "clave_acceso VARCHAR(50)"
                     + ")";
             statement.executeUpdate(crearTablaAdmin);
 
@@ -190,7 +193,10 @@ public class ConectorRepo {
             statement = connection.createStatement();
             String crearTablaLimpieza = "CREATE TABLE IF NOT EXISTS Limpieza ("
                     + "id INT AUTO_INCREMENT PRIMARY KEY,"
-                    + "FOREIGN KEY (id) REFERENCES persona(id)"
+                    + "nombre VARCHAR(100) NOT NULL,"
+                    + "dni INT NOT NULL,"
+                    + "rol VARCHAR(50),"
+                    + "clave_acceso VARCHAR(50)"
                     + ")";
             statement.executeUpdate(crearTablaLimpieza);
 
@@ -228,7 +234,10 @@ public class ConectorRepo {
             statement = connection.createStatement();
             String crearTablaRecepcionista = "CREATE TABLE IF NOT EXISTS Recepcionista ("
                     + "id INT AUTO_INCREMENT PRIMARY KEY,"
-                    + "FOREIGN KEY (id) REFERENCES persona(id)"
+                    + "nombre VARCHAR(100) NOT NULL,"
+                    + "dni INT NOT NULL,"
+                    + "rol VARCHAR(50),"
+                    + "clave_acceso VARCHAR(50)"
                     + ")";
             statement.executeUpdate(crearTablaRecepcionista);
 

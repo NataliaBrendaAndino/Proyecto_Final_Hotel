@@ -11,6 +11,8 @@ import excepciones.OpcionIncorrectaException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import API.ApiMonedas;
+
 public class AutenticacionImplementa implements Autenticacion {
 
     Scanner leer = new Scanner(System.in);
@@ -114,7 +116,21 @@ public class AutenticacionImplementa implements Autenticacion {
                     System.out
                             .println("Mucho gusto, " + pasajero.getNombre() + ", soy tu recepcionista virtual");
                     System.out.println("");
-                    regiImple.tomarReserva();
+                    System.out.println("¿Qué deseas hacer?");
+                    System.out.println("1. Tomar reserva");
+                    System.out.println("2. Consultar dolar");
+                    int menu = leer.nextInt();
+                    switch (menu) {
+                        case 1:
+                            regiImple.tomarReserva();
+                            break;
+                        case 2:
+                            ApiMonedas apiMonedas = new ApiMonedas();
+                            apiMonedas.consumirApiMonedas();
+                            break;
+                        default:
+                            throw new IndexOutOfBoundsException("Opción inválida.");
+                    }
 
                 }
 

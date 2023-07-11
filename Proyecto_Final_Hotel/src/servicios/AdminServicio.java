@@ -1,8 +1,6 @@
 package servicios;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
 import entidades.Limpieza;
@@ -10,12 +8,17 @@ import entidades.Persona;
 import entidades.Recepcionista;
 
 import excepciones.IndexOutOfBoundsException;
+import repositorio.LimpiezaRepo;
+import repositorio.RecepcionistaRepo;
 
 public class AdminServicio {
 
     private ArrayList<Persona> empleados;
 
     Scanner leer = new Scanner(System.in);
+
+    RecepcionistaRepo recepcionistaRepo = new RecepcionistaRepo();
+    LimpiezaRepo limpiezaRepo = new LimpiezaRepo();
 
     public AdminServicio() {
         empleados = new ArrayList<>();
@@ -42,7 +45,7 @@ public class AdminServicio {
 
             System.out.println("");
             System.out.println("1 | Ingresar nuevo recepcionista");
-            System.out.println("2 | Mostrar recepcionistas");
+            System.out.println("2 | Mostrar recepcionistas con JDBC");
             System.out.println("3 | Ingresar nuevo empleado de limpieza");
             System.out.println("4 | Mostrar empleados de limpieza");
             System.out.println("5 | Ver todos los empleados");
@@ -59,7 +62,7 @@ public class AdminServicio {
                         break;
 
                     case 2:
-                        mostrarRecepcionistas();
+                        mostrarRecepcionistasJDBC();
                         break;
 
                     case 3:
@@ -94,7 +97,6 @@ public class AdminServicio {
         System.out.println("1 | RECEPCIONISTAS");
         System.out.print("Cantidad de recepcionistas a ingresar: ");
         int cantidadRecepcionistas = leer.nextInt();
-        leer.nextLine();
 
         for (int i = 1; i <= cantidadRecepcionistas; i++) {
 
@@ -117,6 +119,7 @@ public class AdminServicio {
             System.out.println("");
             String dniAString = String.valueOf(recepcionista.getDni());
             recepcionista.setClaveAcceso(dniAString);
+            recepcionistaRepo.persistirRecepcionista(recepcionista);
 
             empleados.add(recepcionista);
         }
@@ -150,6 +153,7 @@ public class AdminServicio {
             System.out.println("");
             String dniAString = String.valueOf(limpieza.getDni());
             limpieza.setClaveAcceso(dniAString);
+            limpiezaRepo.persistirLimpieza(limpieza);
 
             empleados.add(limpieza);
         }
@@ -163,6 +167,11 @@ public class AdminServicio {
                 System.out.println(persona.toString());
             }
         }
+    }
+
+    public void mostrarRecepcionistasJDBC() {
+        RecepcionistaRepo recepcionistaRepo = new RecepcionistaRepo();
+        recepcionistaRepo.mostrarRecepcionistas();
     }
 
     public void mostrarLimpiezas() {

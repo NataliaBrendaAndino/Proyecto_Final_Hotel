@@ -142,7 +142,7 @@ public class RegistroImplementa implements Registro {
         System.out.println("Necesito pedirte algunos datos.");
         System.out.println("");
 
-        System.out.println("Te habías hospedado antes en el hotel? S/N");
+        System.out.println("¿Te habías hospedado antes en el hotel? S/N");
         String menu = leer.nextLine();
         if (menu.equalsIgnoreCase("s")) {
             System.out.println("Que bueno verte otra vez por aquí!");
@@ -161,8 +161,10 @@ public class RegistroImplementa implements Registro {
             pasajero.setNombre(nombrePasajero);
             System.out.println("Indique su DNI");
             int dniPasajero = leer.nextInt();
+            pasajero.setId(dniPasajero);
             pasajero.setDni(dniPasajero);
             pasajero.setRol("pasajero");
+            pasajero.setClaveAcceso("321");
             listaPasajeros.add(pasajero);
             System.out.println("Registro exitoso! Que tengas una excelente estadía!");
             // System.out.println("Completar reserva habitación");

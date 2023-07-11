@@ -4,13 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-
 import entidades.Pasajero;
 
 public class PasajeroRepo {
     private Connection connection;
-    private Statement statement;
     private Pasajero pasajero;
 
     public PasajeroRepo() {

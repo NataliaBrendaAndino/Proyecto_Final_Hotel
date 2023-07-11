@@ -7,10 +7,13 @@ import entidades.Habitacion;
 import entidades.Pasajero;
 import entidades.Persona;
 import entidades.Reserva;
+import repositorio.HabitacionRepo;
 
 public class HabitacionServicio {
     private ArrayList<Habitacion> habitaciones = new ArrayList<>();
     Scanner leer = new Scanner(System.in);
+
+    HabitacionRepo habitacionRepo = new HabitacionRepo();
 
     public HabitacionServicio() {
     }
@@ -25,6 +28,7 @@ public class HabitacionServicio {
             habitacion.setLimpieza(true);
             habitacion.setDesinfeccion(true);
             habitaciones.add(habitacion);
+            // habitacionRepo.persistirHabitaciones(habitacion);
         }
 
         int contador200 = 201;
@@ -35,6 +39,7 @@ public class HabitacionServicio {
             habitacion.setLimpieza(true);
             habitacion.setDesinfeccion(true);
             habitaciones.add(habitacion);
+            // habitacionRepo.persistirHabitaciones(habitacion);
 
         }
 
@@ -46,6 +51,7 @@ public class HabitacionServicio {
             habitacion.setLimpieza(true);
             habitacion.setDesinfeccion(true);
             habitaciones.add(habitacion);
+            // habitacionRepo.persistirHabitaciones(habitacion);
 
         }
 
@@ -57,6 +63,8 @@ public class HabitacionServicio {
             habitacion.setLimpieza(true);
             habitacion.setDesinfeccion(true);
             habitaciones.add(habitacion);
+            // habitacionRepo.persistirHabitaciones(habitacion);
+
         }
     }
 
