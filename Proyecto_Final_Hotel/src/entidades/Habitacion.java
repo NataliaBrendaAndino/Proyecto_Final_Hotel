@@ -7,6 +7,7 @@ public class Habitacion {
     private boolean limpieza;
     private boolean desinfeccion;
     private Reserva reserva;
+    private int reservaId;
 
     public Habitacion() {
 
@@ -68,6 +69,14 @@ public class Habitacion {
 
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
+    }
+
+    public int getReservaId() {
+        return reservaId;
+    }
+
+    public void setReservaId(int reservaId) {
+        this.reservaId = reservaId;
     }
 
 }

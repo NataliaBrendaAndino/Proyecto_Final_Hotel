@@ -75,8 +75,7 @@ public class AutenticacionImplementa implements Autenticacion {
                         } else if (rol.equalsIgnoreCase("Recepcionista")) {
                             persona = new Recepcionista();
                             Recepcionista recep1 = new Recepcionista(1, "Lionel Andres", 23456789, "Recepcionista",
-                                    "123",
-                                    null);
+                                    "123");
 
                             try {
                                 autenticado = autenticar(recep1, idIngresado, claveIngresada);
@@ -90,7 +89,7 @@ public class AutenticacionImplementa implements Autenticacion {
 
                         } else if (rol.equalsIgnoreCase("Limpieza")) {
 
-                            persona = new Limpieza();
+                            // persona = new Limpieza();
                             Limpieza limpi1 = new Limpieza(1, "Emilia Martinez", 23456789, "Limpieza", "arco");
                             try {
                                 autenticado = autenticar(limpi1, idIngresado, claveIngresada);

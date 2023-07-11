@@ -33,6 +33,7 @@ public class RecepcionServicio {
             System.out.println("4 | Check Out habitacion");
             System.out.println("5 | Reservar habitacion");
             System.out.println("6 | Limpieza y Desinfección");
+            System.out.println("7.| Listar habitaciones disponibles");
             System.out.println("0 | Salir");
             int opcion = leer.nextInt();
 
@@ -63,6 +64,9 @@ public class RecepcionServicio {
 
                     case 6:
                         habiServi.consultarLimpiezaYDesinfeccion();
+                        break;
+                    case 7:
+                        habiServi.listarHabitacionesDisponibes();
                         break;
 
                     case 0:

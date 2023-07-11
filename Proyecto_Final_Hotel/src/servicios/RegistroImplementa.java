@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import entidades.Historial;
 import entidades.Pasajero;
+import repositorio.PasajeroRepo;
 
 public class RegistroImplementa implements Registro {
 
@@ -19,6 +20,7 @@ public class RegistroImplementa implements Registro {
 
     // declaraciones globales
     Scanner leer = new Scanner(System.in);
+    PasajeroRepo pasajeroRepo = new PasajeroRepo();
 
     @Override
     public void checkIn() {
@@ -40,8 +42,11 @@ public class RegistroImplementa implements Registro {
                     System.out.println("Ingrese el domicilio de origen");
                     String domicilioOrigen = leer.next();
                     pasajero.setDomicilioOrigen(domicilioOrigen);
+                    pasajero.setId(dni);
+                    pasajero.setClaveAcceso("321");
                     listaPasajeros.add(pasajero);
                     System.out.println("Datos del Pasajero guardados exitosamente. Completar habitación.");
+                    pasajeroRepo.persistirPasajero(pasajero);
                 }
             }
         } else {
@@ -53,6 +58,8 @@ public class RegistroImplementa implements Registro {
             System.out.println("Ingrese el DNI del pasajero");
             int dni = leer.nextInt();
             pasajero.setDni(dni);
+            pasajero.setId(dni);
+            pasajero.setClaveAcceso("321");
             System.out.println("Ingrese la nacionalidad del pasajero");
             String nacionalidad = leer.next();
             pasajero.setNacionalidad(nacionalidad);
@@ -61,6 +68,8 @@ public class RegistroImplementa implements Registro {
             pasajero.setDomicilioOrigen(domicilioOrigen);
             listaPasajeros.add(pasajero);
             System.out.println("Datos del Pasajero guardados exitosamente. Completar habitación.");
+            pasajeroRepo.persistirPasajero(pasajero);
+
         }
     }
 
