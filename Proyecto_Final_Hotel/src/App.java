@@ -1,10 +1,6 @@
-import API.ApiMonedas;
-import entidades.Recepcionista;
+
 import repositorio.ConectorRepo;
-import repositorio.HabitacionRepo;
-import repositorio.RecepcionistaRepo;
 import servicios.AutenticacionImplementa;
-import servicios.HabitacionServicio;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -24,9 +20,7 @@ public class App {
         ConectorRepo repo = new ConectorRepo();
 
         AutenticacionImplementa autentic = new AutenticacionImplementa();
-        // autentic.ingresoUsuario();
-        ApiMonedas apiMonedas = new ApiMonedas();
-        apiMonedas.consumirApiMonedas();
+        autentic.ingresoUsuario();
 
     }
 }
